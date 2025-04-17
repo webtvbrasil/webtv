@@ -1,1 +1,52 @@
-Olá mundo
+<script>
+        // Valores padrão
+        const defaults = {
+            canal: "F5B580D43F9011EC97A574D02B29C423",
+            id: "",
+            det: "1",
+            width: "100%",
+            height: "100%"
+        };
+
+        // Função para obter parâmetros da URL
+        function getQueryParams() {
+            const params = {};
+            const queryString = window.location.search.substring(1);
+            const pairs = queryString.split('&');
+            
+            pairs.forEach(pair => {
+                const [key, value] = pair.split('=');
+                if (key) {
+                    params[key] = value ? decodeURIComponent(value) : '';
+                }
+            });
+            
+            return params;
+        }
+
+        // Obtém parâmetros da URL
+        const urlParams = getQueryParams();
+
+        // Cria o elemento script dinamicamente
+        const script = document.createElement('script');
+        script.src = 'https://app.multisocial.com.br/unitv/webtv.js';
+        
+        // Define os atributos com valores da URL ou padrões
+        script.setAttribute('data-vod', urlParams.vod || defaults.vod);
+        script.setAttribute('data-id', urlParams.id || defaults.id);
+        script.setAttribute('data-det', urlParams.det || defaults.det);
+        script.setAttribute('data-width', urlParams.width || defaults.width);
+        script.setAttribute('data-height', urlParams.height || defaults.height);
+
+        // Adiciona o script à página
+        document.getElementById('player-container').appendChild(script);
+
+        // Garante que o iframe mantenha 100% após carregamento
+        script.onload = function() {
+            const iframe = document.querySelector('#player-container iframe');
+            if(iframe) {
+                iframe.style.height = '100%';
+                iframe.style.width = '100%';
+            }
+        };
+    </script>
