@@ -1,7 +1,34 @@
-<script>
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ondemand Vídeo Player Streaming</title>
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+        #player-container {
+            width: 100%;
+            height: 100vh;
+        }
+        #player-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+    </style>
+</head>
+<body>
+    <div id="player-container"></div>
+    
+    <script>
         // Valores padrão
         const defaults = {
-            canal: "F5B580D43F9011EC97A574D02B29C423",
+            vod: "769E79BDBD065021CA40474E",
             id: "",
             det: "1",
             width: "100%",
@@ -50,3 +77,5 @@
             }
         };
     </script>
+</body>
+</html>
